@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Resume Builder</title>
-    <link rel="stylesheet" href="/static/index.css">
+    <link rel="stylesheet" href="/static/Ats_score_check.css">
 
 </head>
 <body>
@@ -25,7 +25,14 @@
         <p>Create, analyze, and improve your resume with AI</p>
     </div>
 
- 
+    <!-- ATS Score Section -->
+    <div class="ats-section">
+        <h2>Check Your ATS Score</h2>
+        <input type="file" id="resumeFile">
+        <button onclick="uploadResume()">Check Score</button>
+        <p id="result"></p>
+    </div>
+
     <!-- Features Section -->
     <div class="features">
         <div class="card">
