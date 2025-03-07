@@ -1,10 +1,8 @@
 fastapi
 uvicorn
-selenium
-bs4
-pdfminer.six
-python-multipart
 jinja2
-
-BeautifulSoup4
-
+requests
+beautifulsoup4
+pandas
+scikit-learn
+python-multipart
