@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background: #e3f2fd;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0px 0px 10px #aaa;
+            border-radius: 5px;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        input, textarea {
+            width: 48%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .resume-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px #000;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .resume-popup h2 {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .resume-section {
+            border: 2px solid #007BFF;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .close-btn {
+            background: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color:#007BFF;">Resume Builder</h2>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Phone">
+            <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+        </div>
+        <textarea id="education" placeholder="Education (e.g., B.Tech in Computer Science)"></textarea>
+        <textarea id="experience" placeholder="Work Experience"></textarea>
+        <textarea id="skills" placeholder="Skills (e.g., Python, Machine Learning, React)"></textarea>
+
+        <button onclick="openPreview()">Preview Resume</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+    <!-- Popup Resume Preview -->
+    <div id="resumePopup" class="resume-popup">
+        <h2>Resume Preview</h2>
+        <div class="resume-section"><b>Name:</b> <span id="res-name"></span></div>
+        <div class="resume-section"><b>Email:</b> <span id="res-email"></span></div>
+        <div class="resume-section"><b>Phone:</b> <span id="res-phone"></span></div>
+        <div class="resume-section"><b>LinkedIn:</b> <span id="res-linkedin"></span></div>
+        <div class="resume-section"><b>Education:</b> <span id="res-education"></span></div>
+        <div class="resume-section"><b>Experience:</b> <span id="res-experience"></span></div>
+        <div class="resume-section"><b>Skills:</b> <span id="res-skills"></span></div>
+        <button class="close-btn" onclick="closePreview()">Close</button>
+    </div>
+
+    <script>
+        function openPreview() {
+            document.getElementById("res-name").innerText = document.getElementById("name").value;
+            document.getElementById("res-email").innerText = document.getElementById("email").value;
+            document.getElementById("res-phone").innerText = document.getElementById("phone").value;
+            document.getElementById("res-linkedin").innerText = document.getElementById("linkedin").value;
+            document.getElementById("res-education").innerText = document.getElementById("education").value;
+            document.getElementById("res-experience").innerText = document.getElementById("experience").value;
+            document.getElementById("res-skills").innerText = document.getElementById("skills").value;
+
+            document.getElementById("resumePopup").style.display = "block";
+        }
+
+        function closePreview() {
+            document.getElementById("resumePopup").style.display = "none";
+        }
+
+        function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    // Set Title
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(18);
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFillColor(0, 123, 255);
+    pdf.rect(10, 10, 190, 10, "F");
+    pdf.text("Resume", 90, 17);
+
+    pdf.setFontSize(12);
+    pdf.setTextColor(0, 0, 0);
+
+    function addBoxedText(title, content, yPos) {
+        pdf.setFillColor(230, 242, 255);
+        pdf.rect(10, yPos, 190, 10, "F");
+        
+        pdf.setFont("helvetica", "bold");
+        pdf.text(title + ":", 15, yPos + 7);
+        
+        pdf.setFont("helvetica", "normal");
+        pdf.text(content, 15, yPos + 17);
+        
+        return yPos + 25;
+    }
+
+    let y = 30;
+    y = addBoxedText("Name", document.getElementById("name").value, y);
+    y = addBoxedText("Email", document.getElementById("email").value, y);
+    y = addBoxedText("Phone", document.getElementById("phone").value, y);
+    y = addBoxedText("LinkedIn", document.getElementById("linkedin").value, y);
+    y = addBoxedText("Education", document.getElementById("education").value, y);
+    y = addBoxedText("Work Experience", document.getElementById("experience").value, y);
+    y = addBoxedText("Skills", document.getElementById("skills").value, y);
+
+    pdf.save("Resume.pdf");
+}
+
+
+    </script>
+
+</body>
+</html>

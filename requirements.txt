@@ -1,7 +1,10 @@
 fastapi
 uvicorn
-gunicorn
-pandas
-scikit-learn
-jinja2
+selenium
+bs4
+pdfminer.six
 python-multipart
+jinja2
+
+BeautifulSoup4
+
