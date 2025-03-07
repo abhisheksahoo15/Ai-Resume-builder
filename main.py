@@ -2,8 +2,8 @@ from fastapi import FastAPI, Request, File, UploadFile, Form, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 import os
-import shutil
-import pickle
+# import shutil
+# import pickle
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
@@ -23,23 +23,23 @@ templates = Jinja2Templates(directory="templates")
 # Serve static files (CSS, JS, Images)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Ensure necessary directories exist
-os.makedirs("temp", exist_ok=True)
-os.makedirs("ml_model", exist_ok=True)
+# # Ensure necessary directories exist
+# os.makedirs("temp", exist_ok=True)
+# os.makedirs("ml_model", exist_ok=True)
 
-# Load the ATS Score Prediction Model
-model_path = "ml_model/ats_model.pkl"
-ats_model = None  # Initialize as None
+# # Load the ATS Score Prediction Model
+# model_path = "ml_model/ats_model.pkl"
+# ats_model = None  # Initialize as None
 
-try:
-    if os.path.exists(model_path):
-        with open(model_path, "rb") as model_file:
-            ats_model = pickle.load(model_file)
-        logger.info("ATS Model loaded successfully")
-    else:
-        logger.warning(f"Model file not found at {model_path}")
-except Exception as e:
-    logger.error(f"Error loading ATS model: {e}")
+# try:
+#     if os.path.exists(model_path):
+#         with open(model_path, "rb") as model_file:
+#             ats_model = pickle.load(model_file)
+#         logger.info("ATS Model loaded successfully")
+#     else:
+#         logger.warning(f"Model file not found at {model_path}")
+# except Exception as e:
+#     logger.error(f"Error loading ATS model: {e}")
 
 @app.get("/")
 async def home(request: Request):
@@ -50,48 +50,48 @@ async def home(request: Request):
         logger.error(f"Error loading home page: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get("/ats-score-check/")
-async def ats_score_page(request: Request):
-    """ Serve the ATS Score Check Page """
-    try:
-        return templates.TemplateResponse("ats_score_check.html", {"request": request, "title": "ATS Score Check"})
-    except Exception as e:
-        logger.error(f"Error loading ATS score check page: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+# @app.get("/ats-score-check/")
+# async def ats_score_page(request: Request):
+#     """ Serve the ATS Score Check Page """
+#     try:
+#         return templates.TemplateResponse("ats_score_check.html", {"request": request, "title": "ATS Score Check"})
+#     except Exception as e:
+#         logger.error(f"Error loading ATS score check page: {e}")
+#         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.post("/predict/")
-async def predict_ats_score(file: UploadFile = File(...)):
-    """ Process Resume & Predict ATS Score """
-    try:
-        if not file.filename:
-            raise HTTPException(status_code=400, detail="No file uploaded")
+# @app.post("/predict/")
+# async def predict_ats_score(file: UploadFile = File(...)):
+#     """ Process Resume & Predict ATS Score """
+#     try:
+#         if not file.filename:
+#             raise HTTPException(status_code=400, detail="No file uploaded")
 
-        # Save uploaded file temporarily
-        file_location = f"temp/{file.filename}"
-        with open(file_location, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+#         # Save uploaded file temporarily
+#         file_location = f"temp/{file.filename}"
+#         with open(file_location, "wb") as buffer:
+#             shutil.copyfileobj(file.file, buffer)
 
-        # Check if model is loaded
-        if ats_model is None:
-            logger.error("ATS model not loaded")
-            raise HTTPException(status_code=500, detail="ATS model not available")
+#         # Check if model is loaded
+#         if ats_model is None:
+#             logger.error("ATS model not loaded")
+#             raise HTTPException(status_code=500, detail="ATS model not available")
 
-        # Convert file data to a format compatible with ML model (Dummy example)
-        resume_data = {"feature1": [1], "feature2": [0], "feature3": [1]}  # Modify as per your model
-        resume_df = pd.DataFrame(resume_data)
+#         # Convert file data to a format compatible with ML model (Dummy example)
+#         resume_data = {"feature1": [1], "feature2": [0], "feature3": [1]}  # Modify as per your model
+#         resume_df = pd.DataFrame(resume_data)
 
-        # Make Prediction
-        score = ats_model.predict(resume_df)[0]
+#         # Make Prediction
+#         score = ats_model.predict(resume_df)[0]
 
-        return {"status": "success", "score": score}
+#         return {"status": "success", "score": score}
 
-    except HTTPException as http_exc:
-        raise http_exc
-    except Exception as e:
-        logger.error(f"Error processing resume: {e}")
-        raise HTTPException(status_code=500, detail="Error processing resume")
+#     except HTTPException as http_exc:
+#         raise http_exc
+#     except Exception as e:
+#         logger.error(f"Error processing resume: {e}")
+#         raise HTTPException(status_code=500, detail="Error processing resume")
 
-# ---------------------- JOB FINDING FEATURE ----------------------
+# # ---------------------- JOB FINDING FEATURE ----------------------
 
 @app.get("/job-find/")
 async def job_find_page(request: Request):
