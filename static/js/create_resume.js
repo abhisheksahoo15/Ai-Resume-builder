@@ -40,6 +40,8 @@ pdf.text(title + ":", 15, yPos + 7);
 pdf.setFont("helvetica", "normal");
 pdf.text(content, 15, yPos + 17);
 
+
+
 return yPos + 25;
 }
 
