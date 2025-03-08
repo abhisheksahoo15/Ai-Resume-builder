@@ -50,6 +50,17 @@ async def home(request: Request):
         logger.error(f"Error loading home page: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+# resume builder app
+@app.get("/resume-builder/")
+async def resume_builder_page(request: Request):
+    """ Serve the Resume Builder Page """
+    try:
+        return templates.TemplateResponse("create_resume.html", {"request": request, "title": "Resume Builder"})
+    except Exception as e:
+        logger.error(f"Error loading resume builder page: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+
 # @app.get("/ats-score-check/")
 # async def ats_score_page(request: Request):
 #     """ Serve the ATS Score Check Page """
