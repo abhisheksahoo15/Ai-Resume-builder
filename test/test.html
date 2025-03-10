@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 90%;
+            border-radius: 5px;
+            border: 1px solid #90caf9;
+        }
+
+        button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1976d2;
+        }
+
+        .job-list {
+            margin-top: 20px;
+        }
+
+        .job-card {
+            border: 1px solid #90caf9;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 300px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-card h4 {
+            color: #0d47a1;
+        }
+
+        .job-card a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #1976d2;
+            font-weight: bold;
+        }
+
+        .job-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: #0d47a1;">Find Jobs</h2>
+        <input type="text" id="role" placeholder="Enter Job Role">
+        <input type="text" id="location" placeholder="Enter Location">
+        <button onclick="fetchJobs()">Search</button>
+        
+        <h3 style="color: #1565c0;">Job Results</h3>
+        <div id="job-results" class="job-list"></div>
+    </div>
+
+    <script>
+        async function fetchJobs() {
+            const role = document.getElementById("role").value;
+            const location = document.getElementById("location").value;
+            
+            const formData = new URLSearchParams();
+            formData.append("role", role);
+            formData.append("location", location);
+
+            const response = await fetch("/fetch-jobs/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData
+            });
+
+            const data = await response.json();
+            displayJobs(data.jobs);
+        }
+
+        function displayJobs(jobs) {
+            const jobContainer = document.getElementById("job-results");
+            jobContainer.innerHTML = "";
+
+            if (jobs.length === 0) {
+                jobContainer.innerHTML = "<p>No jobs found.</p>";
+                return;
+            }
+
+            jobs.forEach(job => {
+                const jobCard = `<div class="job-card">
+                    <h4>${job.title}</h4>
+                    <p>Company: ${job.company}</p>
+                    <a href="${job.link}" target="_blank">Apply Now</a>
+                </div>`;
+                jobContainer.innerHTML += jobCard;
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,7 +1,10 @@
 fastapi
 uvicorn
-gunicorn
+jinja2
+requests
+beautifulsoup4
 pandas
 scikit-learn
-jinja2
+
 python-multipart
+numpy 

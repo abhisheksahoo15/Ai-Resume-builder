@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="/static/css/create_resume.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/static/js/create_resume.js"></script>
+ 
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color:#007BFF;">Resume Builder</h2>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Phone">
+            <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+        </div>
+        <textarea id="education" placeholder="Education (e.g., B.Tech in Computer Science)"></textarea>
+        <textarea id="experience" placeholder="Work Experience"></textarea>
+        <textarea id="skills" placeholder="Skills (e.g., Python, Machine Learning, React)"></textarea>
+
+        <button onclick="openPreview()">Preview Resume</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+    <!-- Popup Resume Preview -->
+    <div id="resumePopup" class="resume-popup">
+        <h2>Resume Preview</h2>
+        <div class="resume-section"><b>Name:</b> <span id="res-name"></span></div>
+        <div class="resume-section"><b>Email:</b> <span id="res-email"></span></div>
+        <div class="resume-section"><b>Phone:</b> <span id="res-phone"></span></div>
+        <div class="resume-section"><b>LinkedIn:</b> <span id="res-linkedin"></span></div>
+        <div class="resume-section"><b>Education:</b> <span id="res-education"></span></div>
+        <div class="resume-section"><b>Experience:</b> <span id="res-experience"></span></div>
+        <div class="resume-section"><b>Skills:</b> <span id="res-skills"></span></div>
+        <button class="close-btn" onclick="closePreview()">Close</button>
+    </div>
+
+
+
+</body>
+</html>

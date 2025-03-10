@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Finder</title>
+    <link rel="stylesheet" href="/static/css/job_find.css">
+</head>
+<body>
+
+
+    
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Hirefire Ai</h1>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="color: #0d47a1;">Find Jobs</h2>
+        <input type="text" id="role" placeholder="Enter Job Role">
+        <input type="text" id="location" placeholder="Enter Location">
+        <button onclick="fetchJobs()">Search</button>
+        
+        <h3 style="color: #1565c0;">Job Results</h3>
+        <div id="job-results" class="job-list"></div>
+    </div>
+
+    <script>
+        async function fetchJobs() {
+            const role = document.getElementById("role").value;
+            const location = document.getElementById("location").value;
+            
+            const formData = new URLSearchParams();
+            formData.append("role", role);
+            formData.append("location", location);
+
+            const response = await fetch("/fetch-jobs/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData
+            });
+
+            const data = await response.json();
+            displayJobs(data.jobs);
+        }
+
+        function displayJobs(jobs) {
+            const jobContainer = document.getElementById("job-results");
+            jobContainer.innerHTML = "";
+
+            if (jobs.length === 0) {
+                jobContainer.innerHTML = "<p>No jobs found.</p>";
+                return;
+            }
+
+            jobs.forEach(job => {
+                const jobCard = `<div class="job-card">
+                    <h4>${job.title}</h4>
+                    <p>Company: ${job.company}</p>
+                    <a href="${job.link}" target="_blank">Apply Now</a>
+                </div>`;
+                jobContainer.innerHTML += jobCard;
+            });
+        }
+    </script>
+</body>
+</html>
