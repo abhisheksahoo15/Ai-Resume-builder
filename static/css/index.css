@@ -75,11 +75,11 @@
 
 /* Features Section */
 .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Ensures center alignment */
     gap: 20px;
     padding: 50px;
-    justify-content: center;
     animation: slideIn 1.5s ease-in-out;
 }
 
@@ -143,6 +143,10 @@
     animation: fadeIn 2s ease-in-out;
 }
 
+.footer a {
+    color: white;
+    text-decoration: none;
+}
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
@@ -155,17 +159,26 @@
 }
 
 /* Responsive Design */
+
+/* Tablet View */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         text-align: center;
     }
 
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .features {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
+/* Mobile View */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 28px;
@@ -173,5 +186,14 @@
 
     .hero p {
         font-size: 16px;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;  /* Adjusts width for better fit */
     }
 }
