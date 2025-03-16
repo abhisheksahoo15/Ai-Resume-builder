@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
@@ -21,36 +24,78 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <div class="navbar">Resume Builder</div>
+
     <div class="container">
-        <h2 style="color:#007BFF;">Resume Builder</h2>
-        <div class="input-group">
-            <input type="text" id="name" placeholder="Full Name">
-            <input type="email" id="email" placeholder="Email">
-            <input type="text" id="phone" placeholder="Phone">
-            <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+        <!-- Resume Preview -->
+        <div class="resume-preview" id="resume">
+            <div class="resume-header" id="res-name">Your Name</div>
+            
+            <div class="resume-section">
+                <h3>Contact Information</h3>
+                <p><strong>Email:</strong> <span id="res-email">Your Email</span></p>
+                <p><strong>Phone:</strong> <span id="res-phone">Your Phone Number</span></p>
+                <p><strong>LinkedIn:</strong> <span id="res-linkedin">Your LinkedIn</span></p>
+            </div>
+            
+            <div class="resume-section">
+                <h3>Education</h3>
+                <p id="res-education">Your Education Details</p>
+            </div>
+            
+            <div class="resume-section">
+                <h3>Work Experience</h3>
+                <p id="res-experience">Your Work Experience</p>
+            </div>
+
+            <div class="resume-section">
+                <h3>Projects</h3>
+                <p id="res-projects">Your Projects</p>
+            </div>
+
+            <div class="resume-section">
+                <h3>Certifications</h3>
+                <p id="res-certifications">Your Certifications</p>
+            </div>
         </div>
-        <textarea id="education" placeholder="Education (e.g., B.Tech in Computer Science)"></textarea>
-        <textarea id="experience" placeholder="Work Experience"></textarea>
-        <textarea id="skills" placeholder="Skills (e.g., Python, Machine Learning, React)"></textarea>
 
-        <button onclick="openPreview()">Preview Resume</button>
-        <button onclick="downloadPDF()">Download PDF</button>
+        <!-- Resume Form -->
+        <div class="resume-form">
+            <h3>Enter Your Details</h3>
+
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Your Name" oninput="updatePreview()">
+            
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Your Email" oninput="updatePreview()">
+            
+            <label>Phone:</label>
+            <input type="text" id="phone" placeholder="Your Phone Number" oninput="updatePreview()">
+            
+            <label>LinkedIn:</label>
+            <input type="text" id="linkedin" placeholder="LinkedIn Profile URL" oninput="updatePreview()">
+            
+            <label>Education:</label>
+            <textarea id="education" placeholder="Your Education Details" oninput="updatePreview()"></textarea>
+            
+            <label>Work Experience:</label>
+            <textarea id="experience" placeholder="Your Work Experience" oninput="updatePreview()"></textarea>
+
+            <label>Projects:</label>
+            <textarea id="projects" placeholder="Your Projects" oninput="updatePreview()"></textarea>
+
+            <label>Certifications:</label>
+            <textarea id="certifications" placeholder="Your Certifications" oninput="updatePreview()"></textarea>
+            
+            <div class="button-group">
+                <button onclick="downloadPDF()">Download PDF</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Popup Resume Preview -->
-    <div id="resumePopup" class="resume-popup">
-        <h2>Resume Preview</h2>
-        <div class="resume-section"><b>Name:</b> <span id="res-name"></span></div>
-        <div class="resume-section"><b>Email:</b> <span id="res-email"></span></div>
-        <div class="resume-section"><b>Phone:</b> <span id="res-phone"></span></div>
-        <div class="resume-section"><b>LinkedIn:</b> <span id="res-linkedin"></span></div>
-        <div class="resume-section"><b>Education:</b> <span id="res-education"></span></div>
-        <div class="resume-section"><b>Experience:</b> <span id="res-experience"></span></div>
-        <div class="resume-section"><b>Skills:</b> <span id="res-skills"></span></div>
-        <button class="close-btn" onclick="closePreview()">Close</button>
-    </div>
-
-
+    <!-- Footer -->
+    <div class="footer">© 2025 Resume Builder | All Rights Reserved</div>
 
 </body>
 </html>
