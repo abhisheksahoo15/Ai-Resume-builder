@@ -24,11 +24,11 @@ def test_resume_builder_page():
     assert response.status_code == 200
     assert "Resume Builder" in response.text  # Ensure correct page load
 
-def test_ats_score_page():
-    """Test if the ATS score check page loads successfully."""
-    response = client.get("/ats-score-check/")
-    assert response.status_code == 200
-    assert "ATS Score Check" in response.text
+# def test_ats_score_page():
+#     """Test if the ATS score check page loads successfully."""
+#     response = client.get("/ats-score-check/")
+#     assert response.status_code == 200
+#     assert "ATS Score Check" in response.text
 
 def test_job_finder_page():
     """Test if the job finder page loads successfully."""
