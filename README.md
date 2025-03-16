@@ -32,10 +32,11 @@ The CI/CD pipeline automates code integration, testing, and deployment:
 - The app is deployed using **Terraform** and **GitHub Actions**.
 - Infrastructure is managed using Terraform configurations.
 - GitHub Actions automates the deployment to Azure Web Apps.
-- The live version can be accessed at: [AI Resume Builder](https://ai-resume-builder.azurewebsites.net)
+- The live version can be accessed at: [AI Resume Builder](https://hirefireai.cloud)
 
 ## 7️⃣ Contributors
-- **Abhishek Shaoo** - Project Lead & Developer
+- **Abhishek Shaoo** - Project Manager ,CI / CD Pipeline & Developer
+- **Abhishek Shaoo** - Devsecops Github Actions
 - Open to contributions! Feel free to submit a PR.
 
 ## 8️⃣ Agile Development Process
