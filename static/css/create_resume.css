@@ -1,69 +1,171 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
-    background: #e3f2fd;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
 }
+
+/* Navbar */
+.navbar {
+    background: #007bff;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Main Container */
 .container {
-    max-width: 700px;
+    display: flex;
+    flex-wrap: nowrap;  /* Prevent stacking */
+    justify-content: space-between; /* Space out the form and preview */
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Resume Preview and Form */
+.resume-preview, .resume-form {
+    width: 48%;
     background: white;
     padding: 20px;
-    margin: auto;
-    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the resume preview */
+.resume-preview {
+    border: 5px solid #007bff;
+}
+
+/* Responsive Fix */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-wrap: wrap;  /* Allow stacking on smaller screens */
+        justify-content: center;
+    }
+
+    .resume-preview, .resume-form {
+        width: 100%;
+    }
+}
+
+/* Resume Header */
+.resume-header {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Resume Sections */
+.resume-section {
+    margin-top: 15px;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+    background: #eef4ff;
     border-radius: 5px;
 }
-.input-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
+.resume-section h3 {
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
 }
-input, textarea {
-    width: 48%;
-    padding: 10px;
+
+.resume-section p {
     margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Form Styling */
+h2 {
+    text-align: center;
+    color: #007bff;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: none;
+    font-size: 16px;
 }
+
+.button-group {
+    text-align: center;
+}
+
 button {
-    background: #007BFF;
+    background: #007bff;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
     border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 16px;
 }
+
 button:hover {
     background: #0056b3;
 }
-.resume-popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    background: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px #000;
-    border-radius: 5px;
-    z-index: 1000;
-}
-.resume-popup h2 {
-    background: #007BFF;
+
+/* Footer */
+.footer {
+    background: #007bff;
     color: white;
-    padding: 10px;
     text-align: center;
-}
-.resume-section {
-    border: 2px solid #007BFF;
     padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+    margin-top: 20px;
 }
-.close-btn {
-    background: red;
-    margin-top: 10px;
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .resume-preview, .resume-form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .resume-preview, .resume-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .resume-header {
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .resume-section h3 {
+        font-size: 16px;
+    }
+
+    .resume-section p {
+        font-size: 12px;
+    }
+
+    input, textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
 }

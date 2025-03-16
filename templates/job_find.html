@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G26FCTWQQP');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Finder</title>
@@ -17,25 +8,20 @@
 </head>
 <body>
 
-
-    
-    <!-- Navbar -->
     <div class="navbar">
-        <h1>Hirefire Ai</h1>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">Contact</a>
-        </div>
+        <h1>Hirefire AI</h1>
     </div>
 
     <div class="container">
-        <h2 style="color: #0d47a1;">Find Jobs</h2>
+        <h2>Find Jobs</h2>
         <input type="text" id="role" placeholder="Enter Job Role">
         <input type="text" id="location" placeholder="Enter Location">
         <button onclick="fetchJobs()">Search</button>
         
-        <h3 style="color: #1565c0;">Job Results</h3>
+        <!-- ✅ Spinner -->
+        <div class="loading-spinner" id="loading-spinner"></div>
+
+        <h3>Job Results</h3>
         <div id="job-results" class="job-list"></div>
     </div>
 
@@ -43,19 +29,35 @@
         async function fetchJobs() {
             const role = document.getElementById("role").value;
             const location = document.getElementById("location").value;
-            
+            const jobContainer = document.getElementById("job-results");
+            const loadingSpinner = document.getElementById("loading-spinner");
+
+            // ✅ Show spinner before fetching jobs
+            loadingSpinner.style.display = "block";
+            jobContainer.innerHTML = ""; // Clear previous results
+
             const formData = new URLSearchParams();
             formData.append("role", role);
             formData.append("location", location);
 
-            const response = await fetch("/fetch-jobs/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: formData
-            });
+            try {
+                const response = await fetch("/fetch-jobs/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: formData
+                });
 
-            const data = await response.json();
-            displayJobs(data.jobs);
+                const data = await response.json();
+                displayJobs(data.jobs);
+            } catch (error) {
+                console.error("Error fetching jobs:", error);
+                jobContainer.innerHTML = "<p style='color: red;'>Error fetching jobs. Try again.</p>";
+            } finally {
+                // ✅ Hide spinner after 3 seconds
+                setTimeout(() => {
+                    loadingSpinner.style.display = "none";
+                }, 3000);
+            }
         }
 
         function displayJobs(jobs) {
@@ -68,14 +70,17 @@
             }
 
             jobs.forEach(job => {
-                const jobCard = `<div class="job-card">
-                    <h4>${job.title}</h4>
-                    <p>Company: ${job.company}</p>
-                    <a href="${job.link}" target="_blank">Apply Now</a>
-                </div>`;
+                const jobCard = `
+                    <div class="job-card">
+                        <h4>${job.title}</h4>
+                        <p>Company: ${job.company}</p>
+                        <a href="${job.link}" target="_blank">Apply Now</a>
+                    </div>
+                `;
                 jobContainer.innerHTML += jobCard;
             });
         }
     </script>
+
 </body>
 </html>
