@@ -1,3 +1,8 @@
+// Function to sanitize filenames (Prevents XSS via file names)
+function sanitizeFileName(fileName) {
+    return fileName.replace(/[<>\/\\:*?"|]/g, "");  // Remove special characters
+}
+
 async function uploadResume() {
     let input = document.getElementById("resumeInput").files[0];
 

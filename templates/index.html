@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI Resume Builder 2025 nh</title>
+    <title>AI Resume Builder 2025</title>
     <link rel="stylesheet" href="/static/css/index.css">
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G26FCTWQQP');
+</script>
+<link rel="icon" type="image/png" href="/static/images/Ats.jpg">
 
 </head>
 <body>
 
     <!-- Navbar -->
     <div class="navbar">
-
-      <h1>Hirefire Ai</h1>
-
+        <h1>Hirefire AI </h1>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">Contact</a>
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact us </a>
         </div>
     </div>
 
@@ -27,9 +35,9 @@
     <div class="hero">
         <h1>Build Your Resume Smartly</h1>
         <p>Create, analyze, and improve your resume with AI</p>
+
     </div>
 
- 
     <!-- Features Section -->
     <div class="features">
         <div class="card">
@@ -52,29 +60,13 @@
             <p>Find jobs based on your resume data and skills.</p>
             <button onclick="window.location.href='/job-find/'">Find Jobs</button>
         </div>
-        
     </div>
 
     <!-- Footer -->
     <div class="footer">
+        <p><a href="/about/"><b>Know About us</b></a> </p><br>
         <p>&copy; 2025 AI Resume Builder | Designed with ❤️</p>
     </div>
-
-    <script>
-        async function uploadResume() {
-            let fileInput = document.getElementById("resumeFile").files[0];
-            let formData = new FormData();
-            formData.append("file", fileInput);
-
-            let response = await fetch("https://ai-resume-builder.azurewebsites.net/predict/", {
-                method: "POST",
-                body: formData
-            });
-
-            let result = await response.json();
-            document.getElementById("result").innerText = "ATS Score: " + result["ATS Score"];
-        }
-    </script>
 
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HireFire AI</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #1E1E2D;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #6B73FF;
+        }
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            color: white;
+        }
+        .contact-section form {
+            max-width: 400px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-section input, .contact-section textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .contact-section button {
+            background: #1E1E2D;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-section button:hover {
+            background: #3A3A5D;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1E1E2D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>HireFire AI - Resume Builder</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/features/">Features</a>
+            <a href="/about/">About</a>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <h1>Contact Us</h1>
+        <p>Have questions? We’d love to hear from you. Reach out to us using the form below.</p>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>Email: support@hirefireai.cloud</p>
+            <p>Phone: +91-9876543210</p>
+            <p>Location: Bangalore, India</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 HireFire AI | Designed with ❤️</p>
+    </div>
+
+</body>
+</html>

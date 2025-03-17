@@ -53,6 +53,30 @@ async def home(request: Request):
         logger.error(f"Error loading home page: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+
+
+@app.get("/about/")
+async def about(request: Request):
+    """ Serve the Landing Page """
+    try:
+        return templates.TemplateResponse("about.html", {"request": request, "title": "FastAPI Web Page"})
+    except Exception as e:
+        logger.error(f"Error loading home page: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+
+
+@app.get("/contact/")
+async def contact(request: Request):
+    """ Serve the Landing Page """
+    try:
+        return templates.TemplateResponse("contact.html", {"request": request, "title": "FastAPI Web Page"})
+    except Exception as e:
+        logger.error(f"Error loading home page: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+
+
 # resume builder app
 @app.get("/resume-builder/")
 async def resume_builder_page(request: Request):

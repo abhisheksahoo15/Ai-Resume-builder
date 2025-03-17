@@ -1,131 +1,199 @@
-        /* Reset Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
 
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background-color: #1E1E2D;
-            color: white;
-        }
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #1E1E2D;
+    color: white;
+    transition: background 0.3s ease-in-out;
+}
 
-        .navbar h1 {
-            font-size: 24px;
-        }
+.navbar:hover {
+    background-color: #29293d;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #6B73FF, #000DFF);
-            color: white;
-        }
+.nav-links a:hover {
+    color: #FFD700;
+}
 
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #6B73FF, #000DFF);
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+}
 
-        .hero p {
-            font-size: 18px;
-        }
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
 
-        /* ATS Score Section */
-        .ats-section {
-            text-align: center;
-            padding: 50px;
-        }
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
 
-        .ats-section input {
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+.cta-button {
+    padding: 12px 25px;
+    background-color: #d4f7ff;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
 
-        .ats-section button {
-            padding: 10px 20px;
-            background: #1E1E2D;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
+.cta-button:hover {
+    background-color: white;
+    color: #000DFF;
+    transform: scale(1.1);
+}
 
-        .ats-section button:hover {
-            background: #3A3A5D;
-        }
+/* Features Section */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Ensures center alignment */
+    gap: 20px;
+    padding: 50px;
+    animation: slideIn 1.5s ease-in-out;
+}
 
-        /* Features Section */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px;
-        }
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-        .card img {
-            width: 100%;
-            height: 150px;
-            border-radius: 10px;
-        }
+.card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+}
 
-        .card h3 {
-            margin: 15px 0;
-        }
+.card h3 {
+    margin: 15px 0;
+    font-size: 20px;
+}
 
-        .card p {
-            font-size: 14px;
-            color: #555;
-        }
+.card p {
+    font-size: 14px;
+    color: #555;
+}
 
-        .card button {
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            background: #1E1E2D;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.card button {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background: #1E1E2D;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
 
-        .card button:hover {
-            background: #3A3A5D;
-        }
+.card button:hover {
+    background: #e2eeff;
+    color: black;
+    transform: scale(1.05);
+}
 
-        /* Footer */
-        .footer {
-            background: #1E1E2D;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-        }
+/* Footer */
+.footer {
+    background: #1E1E2D;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    font-size: 14px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive Design */
+
+/* Tablet View */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;  /* Adjusts width for better fit */
+    }
+}

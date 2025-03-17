@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HireFire AI</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #1E1E2D;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #6B73FF;
+        }
+        /* About Section */
+        .about-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            color: white;
+        }
+        .about-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .about-content {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .about-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: transform 0.3s;
+        }
+        .about-card:hover {
+            transform: scale(1.05);
+        }
+        /* Team Section */
+        .team-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: #F4F4F4;
+        }
+        .team-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .team-member {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1E1E2D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>HireFire AI </h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/features/">Features</a>
+            <a href="/contact/">Contact</a>
+        </div>
+    </div>
+
+
+
+    <div class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="/static/images/abhishek.jpg"  alt="Abhishek Shaoo">
+                <h3>Abhishek Shaoo</h3>
+                <p>Project Manager</p>
+                <p>Leading the vision of HireFire AI and driving innovation in AI-powered resume building and Job Hundting.</p>
+                <p><b>Expertise: </b> CI/CD Pipeline , Project management</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/darshan.jpg"  alt="Darshan K.K">
+                <h3>Darshan K.K</h3>
+                <p>Devsecops </p>
+                <p>Development , security and Operation head .</p>
+                <p><b>Expertise: </b> Development and Github actions</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/hemanth.jpg"  alt="hemanth">
+                <h3>hemanth K.V</h3>
+                <p>Deployment</p>
+                <p>Ensuring seamless deployment and automation  & GitHub Actions.</p>
+                <p><b>Expertise: </b>Microsoft Azure</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/resume_builder.jpg"  alt="Emily Johnson">
+                <h3> None</h3>
+                <p>Devloper</p>
+                <p>Designing intuitive and responsive user experiences for our platform.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Michael Brown">
+                <h3>None</h3>
+                <p>Security Analyst</p>
+                <p>Ensuring top-level security for all data and AI integrations.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="about-section">
+        <h1>About HireFire AI</h1>
+        <p>At HireFire AI, we revolutionize resume-building with AI-powered solutions. Our platform ensures your resume is <b>ATS-friendly</b>, well-structured, and tailored to job market needs.</p>
+
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>To <strong>empower job seekers</strong> by providing smart, AI-driven resume-building and job-matching services.</p>
+            </div>
+            <div class="about-card">
+                <h3>Why Choose Us?</h3>
+                <p>We <b>analyze, optimize, and enhance </b> resumes with AI to help you get **noticed faster** by recruiters.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 HireFire AI | Designed with ❤️</p>
+    </div>
+
+</body>
+</html>
