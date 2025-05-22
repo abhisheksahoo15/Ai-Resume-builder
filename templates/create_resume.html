@@ -1,101 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume Builder</title>
-    <link rel="stylesheet" href="/static/css/create_resume.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="/static/js/create_resume.js"></script>
+
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-G26FCTWQQP');
-</script>
- 
-</head>
-<body>
-
+      gtag("config", "G-G26FCTWQQP");
+    </script>
+  </head>
+  <body class="bg-gradient-to-r from-blue-100 to-purple-200 min-h-screen font-sans">
     <!-- Navbar -->
-    <div class="navbar">Resume Builder</div>
+    <div class="bg-blue-600 text-white text-2xl font-bold py-4 px-6 shadow-md">
+      Hirefire Ai~ Resume Builder
+    </div>
 
-    <div class="container">
-        <!-- Resume Preview -->
-        <div class="resume-preview" id="resume">
-            <div class="resume-header" id="res-name">Your Name</div>
-            
-            <div class="resume-section">
-                <h3>Contact Information</h3>
-                <p><strong>Email:</strong> <span id="res-email">Your Email</span></p>
-                <p><strong>Phone:</strong> <span id="res-phone">Your Phone Number</span></p>
-                <p><strong>LinkedIn:</strong> <span id="res-linkedin">Your LinkedIn</span></p>
-            </div>
-            
-            <div class="resume-section">
-                <h3>Education</h3>
-                <p id="res-education">Your Education Details</p>
-            </div>
-            
-            <div class="resume-section">
-                <h3>Work Experience</h3>
-                <p id="res-experience">Your Work Experience</p>
-            </div>
+    <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Resume Preview -->
+      <div class="bg-white p-6 rounded-2xl shadow-xl" id="resume">
+        <div class="text-3xl font-bold text-blue-700 mb-4" id="res-name">Your Name</div>
 
-            <div class="resume-section">
-                <h3>Projects</h3>
-                <p id="res-projects">Your Projects</p>
-            </div>
-
-            <div class="resume-section">
-                <h3>Certifications</h3>
-                <p id="res-certifications">Your Certifications</p>
-            </div>
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold border-b pb-1">Contact Information</h3>
+          <p><strong>Email:</strong> <span id="res-email">Your Email</span></p>
+          <p><strong>Phone:</strong> <span id="res-phone">Your Phone Number</span></p>
+          <p><strong>LinkedIn:</strong> <span id="res-linkedin">Your LinkedIn</span></p>
         </div>
 
-        <!-- Resume Form -->
-        <div class="resume-form">
-            <h3>Enter Your Details</h3>
-
-            <label>Name:</label>
-            <input type="text" id="name" placeholder="Your Name" oninput="updatePreview()">
-            
-            <label>Email:</label>
-            <input type="email" id="email" placeholder="Your Email" oninput="updatePreview()">
-            
-            <label>Phone:</label>
-            <input type="text" id="phone" placeholder="Your Phone Number" oninput="updatePreview()">
-            
-            <label>LinkedIn:</label>
-            <input type="text" id="linkedin" placeholder="LinkedIn Profile URL" oninput="updatePreview()">
-            
-            <label>Education:</label>
-            <textarea id="education" placeholder="Your Education Details" oninput="updatePreview()"></textarea>
-            
-            <label>Work Experience:</label>
-            <textarea id="experience" placeholder="Your Work Experience" oninput="updatePreview()"></textarea>
-
-            <label>Projects:</label>
-            <textarea id="projects" placeholder="Your Projects" oninput="updatePreview()"></textarea>
-
-            <label>Certifications:</label>
-            <textarea id="certifications" placeholder="Your Certifications" oninput="updatePreview()"></textarea>
-            
-            <div class="button-group">
-                <button onclick="downloadPDF()">Download PDF</button>
-            </div>
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold border-b pb-1">Education</h3>
+          <p id="res-education">Your Education Details</p>
         </div>
+
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold border-b pb-1">Work Experience</h3>
+          <p id="res-experience">Your Work Experience</p>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold border-b pb-1">Projects</h3>
+          <p id="res-projects">Your Projects</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold border-b pb-1">Certifications</h3>
+          <p id="res-certifications">Your Certifications</p>
+        </div>
+      </div>
+
+      <!-- Resume Form -->
+      <div class="bg-white p-6 rounded-2xl shadow-xl">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Enter Your Details</h3>
+
+        <label class="block mb-2 font-medium">Name:</label>
+        <input type="text" id="name" placeholder="Your Name" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()" />
+
+        <label class="block mb-2 font-medium">Email:</label>
+        <input type="email" id="email" placeholder="Your Email" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()" />
+
+        <label class="block mb-2 font-medium">Phone:</label>
+        <input type="text" id="phone" placeholder="Your Phone Number" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()" />
+
+        <label class="block mb-2 font-medium">LinkedIn:</label>
+        <input type="text" id="linkedin" placeholder="LinkedIn Profile URL" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()" />
+
+        <label class="block mb-2 font-medium">Education:</label>
+        <textarea id="education" placeholder="Your Education Details" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()"></textarea>
+
+        <label class="block mb-2 font-medium">Work Experience:</label>
+        <textarea id="experience" placeholder="Your Work Experience" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()"></textarea>
+
+        <label class="block mb-2 font-medium">Projects:</label>
+        <textarea id="projects" placeholder="Your Projects" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()"></textarea>
+
+        <label class="block mb-2 font-medium">Certifications:</label>
+        <textarea id="certifications" placeholder="Your Certifications" class="w-full mb-4 p-2 border rounded" oninput="updatePreview()"></textarea>
+
+        <button onclick="downloadPDF()" class="w-full mt-4 py-2 px-4 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-200">
+          Download PDF
+        </button>
+      </div>
     </div>
 
     <!-- Footer -->
-    <div class="footer">© 2025 Resume Builder | All Rights Reserved</div>
-
-</body>
+    <footer class="bg-blue-600 text-white text-center py-4 mt-8">
+      © 2025 Resume Builder | All Rights Reserved
+    </footer>
+  </body>
 </html>

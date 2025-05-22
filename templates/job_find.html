@@ -1,86 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Finder</title>
-    <link rel="stylesheet" href="/static/css/job_find.css">
-</head>
-<body>
-
-    <div class="navbar">
-        <h1>Hirefire AI</h1>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gradient-to-r from-blue-100 to-purple-200 min-h-screen font-sans">
+    <!-- Navbar -->
+    <div class="bg-blue-600 text-white text-2xl font-bold py-4 px-6 shadow-md">
+      Hirefire AI
     </div>
 
-    <div class="container">
-        <h2>Find Jobs</h2>
-        <input type="text" id="role" placeholder="Enter Job Role">
-        <input type="text" id="location" placeholder="Enter Location">
-        <button onclick="fetchJobs()">Search</button>
-        
-        <!-- ✅ Spinner -->
-        <div class="loading-spinner" id="loading-spinner"></div>
+    <div class="container mx-auto p-6">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Find Jobs</h2>
+      <div class="flex flex-col md:flex-row gap-4 mb-4">
+        <input type="text" id="role" placeholder="Enter Job Role" class="p-2 border border-gray-300 rounded w-full md:w-1/3" />
+        <input type="text" id="location" placeholder="Enter Location" class="p-2 border border-gray-300 rounded w-full md:w-1/3" />
+        <button onclick="fetchJobs()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">
+          Search
+        </button>
+      </div>
 
-        <h3>Job Results</h3>
-        <div id="job-results" class="job-list"></div>
+      <!-- ✅ Spinner -->
+      <div id="loading-spinner" class="hidden w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto my-4"></div>
+
+      <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Job Results</h3>
+      <div id="job-results" class="grid gap-4"></div>
     </div>
 
     <script>
-        async function fetchJobs() {
-            const role = document.getElementById("role").value;
-            const location = document.getElementById("location").value;
-            const jobContainer = document.getElementById("job-results");
-            const loadingSpinner = document.getElementById("loading-spinner");
+      async function fetchJobs() {
+        const role = document.getElementById("role").value;
+        const location = document.getElementById("location").value;
+        const jobContainer = document.getElementById("job-results");
+        const loadingSpinner = document.getElementById("loading-spinner");
 
-            // ✅ Show spinner before fetching jobs
-            loadingSpinner.style.display = "block";
-            jobContainer.innerHTML = ""; // Clear previous results
+        loadingSpinner.classList.remove("hidden");
+        jobContainer.innerHTML = "";
 
-            const formData = new URLSearchParams();
-            formData.append("role", role);
-            formData.append("location", location);
+        const formData = new URLSearchParams();
+        formData.append("role", role);
+        formData.append("location", location);
 
-            try {
-                const response = await fetch("/fetch-jobs/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: formData
-                });
+        try {
+          const response = await fetch("/fetch-jobs/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData
+          });
 
-                const data = await response.json();
-                displayJobs(data.jobs);
-            } catch (error) {
-                console.error("Error fetching jobs:", error);
-                jobContainer.innerHTML = "<p style='color: red;'>Error fetching jobs. Try again.</p>";
-            } finally {
-                // ✅ Hide spinner after 3 seconds
-                setTimeout(() => {
-                    loadingSpinner.style.display = "none";
-                }, 3000);
-            }
+          const data = await response.json();
+          displayJobs(data.jobs);
+        } catch (error) {
+          console.error("Error fetching jobs:", error);
+          jobContainer.innerHTML = "<p class='text-red-500'>Error fetching jobs. Try again.</p>";
+        } finally {
+          setTimeout(() => {
+            loadingSpinner.classList.add("hidden");
+          }, 3000);
+        }
+      }
+
+      function displayJobs(jobs) {
+        const jobContainer = document.getElementById("job-results");
+        jobContainer.innerHTML = "";
+
+        if (jobs.length === 0) {
+          jobContainer.innerHTML = "<p>No jobs found.</p>";
+          return;
         }
 
-        function displayJobs(jobs) {
-            const jobContainer = document.getElementById("job-results");
-            jobContainer.innerHTML = "";
-
-            if (jobs.length === 0) {
-                jobContainer.innerHTML = "<p>No jobs found.</p>";
-                return;
-            }
-
-            jobs.forEach(job => {
-                const jobCard = `
-                    <div class="job-card">
-                        <h4>${job.title}</h4>
-                        <p>Company: ${job.company}</p>
-                        <a href="${job.link}" target="_blank">Apply Now</a>
-                    </div>
-                `;
-                jobContainer.innerHTML += jobCard;
-            });
-        }
+        jobs.forEach(job => {
+          const jobCard = `
+            <div class="bg-white shadow-md rounded p-4">
+              <h4 class="text-lg font-bold text-blue-700 mb-1">${job.title}</h4>
+              <p class="text-gray-700 mb-2">Company: ${job.company}</p>
+              <a href="${job.link}" target="_blank" class="text-blue-600 hover:underline">Apply Now</a>
+            </div>
+          `;
+          jobContainer.innerHTML += jobCard;
+        });
+      }
     </script>
-
-</body>
+  </body>
 </html>

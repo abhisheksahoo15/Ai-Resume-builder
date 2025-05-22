@@ -3,70 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>AI Resume Builder</title>
-    <link rel="stylesheet" href="/static/css/index.css">
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G26FCTWQQP');
-</script>
-<link rel="icon" type="image/png" href="/static/images/Ats.jpg">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="icon" type="image/png" href="/static/images/Ats.jpg">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G26FCTWQQP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G26FCTWQQP');
+    </script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-blue-200 min-h-screen font-sans">
 
     <!-- Navbar -->
-    <div class="navbar">
-        <h1>Shri shankracharya mahavidyalaya </h1>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/about/">About</a>
-            <a href="/contact/">Contact us </a>
+    <nav class="flex items-center justify-between p-4 bg-blue-800 text-white shadow-lg">
+        <h1 class="text-2xl font-bold">Hirefire Ai</h1>
+        <div class="space-x-4">
+            <a href="/" class="hover:underline">Home</a>
+            <a href="/about/" class="hover:underline">About</a>
+            <a href="/contact/" class="hover:underline">Contact Us</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>Build Your Resume Smartly</h1>
-        <p>Create, analyze, and improve your resume with AI</p>
-
-    </div>
+    <section class="text-center py-16 px-4">
+        <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Build Your Resume Smartly</h1>
+        <p class="text-lg text-blue-700">Create, analyze, and improve your resume with the power of AI</p>
+    </section>
 
     <!-- Features Section -->
-    <div class="features">
-        <div class="card">
-            <img src="/static/images/resume_builder.jpg" alt="Resume Creator">
-            <h3>Resume Creator</h3>
-            <p>Generate a professional resume with different themes.</p>
-            <button onclick="window.location.href='/resume-builder/'">Try Now</button>
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 pb-16">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition">
+            <img src="/static/images/resume_builder.jpg" alt="Resume Creator" class="mx-auto w-32 h-32 object-cover rounded-full mb-4">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Resume Creator</h3>
+            <p class="mb-4">Generate a professional resume with multiple design themes.</p>
+            <button onclick="window.location.href='/resume-builder/'" class="bg-blue-700 text-white py-2 px-4 rounded-full hover:bg-blue-900">Try Now</button>
         </div>
 
-        <div class="card">
-            <img src="/static/images/Ats.jpg" alt="ATS Score Check">
-            <h3>ATS Score Check</h3>
-            <p>Analyze your resume and get an ATS compatibility score.</p>
-            <button onclick="window.location.href='/ats-score-check/'">Check Score</button>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition">
+            <img src="/static/images/Ats.jpg" alt="ATS Score Check" class="mx-auto w-32 h-32 object-cover rounded-full mb-4">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">ATS Score Check</h3>
+            <p class="mb-4">Analyze your resume and see how ATS-friendly it is.</p>
+            <button onclick="window.location.href='/ats-score-check/'" class="bg-green-600 text-white py-2 px-4 rounded-full hover:bg-green-800">Check Score</button>
         </div>
 
-        <div class="card">
-            <img src="/static/images/find-job.jpg" alt="Job Finder">
-            <h3>Job Finder</h3>
-            <p>Find jobs based on your resume data and skills.</p>
-            <button onclick="window.location.href='/job-find/'">Find Jobs</button>
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition">
+            <img src="/static/images/find-job.jpg" alt="Job Finder" class="mx-auto w-32 h-32 object-cover rounded-full mb-4">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Job Finder</h3>
+            <p class="mb-4">Discover jobs tailored to your resume and skills.</p>
+            <button onclick="window.location.href='/job-find/'" class="bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800">Find Jobs</button>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <div class="footer">
-        <p><a href="/about/"><b>Know About us</b></a> </p><br>
-        <p>&copy; 2025 AI Resume Builder | Designed with ❤️</p>
-    </div>
+    <footer class="bg-blue-900 text-white py-6 text-center">
+        <p class="mb-2"><a href="/about/" class="underline">Know About Us</a></p>
+        <p>&copy; 2025 AI Resume Builder | Designed with <span class="text-red-400">❤️</span></p>
+    </footer>
 
 </body>
 </html>
